@@ -1,0 +1,65 @@
+﻿<Window x:Class="EducationPlatform.Views.StudentClass"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:EducationPlatform.Views" xmlns:ctx="clr-namespace:EducationPlatform.ViewModels" xmlns:convert="clr-namespace:EducationPlatform.Converters"
+        mc:Ignorable="d"
+        Title="StudentClass" Height="600" Width="500">
+    <Window.DataContext>
+        <ctx:StudentClassViewModel/>
+    </Window.DataContext>
+    <Window.Background>
+        <ImageBrush ImageSource="..\Resources\Background3.jpg" />
+    </Window.Background>
+    <Canvas>
+        <StackPanel>
+            <StackPanel.Resources>
+                <convert:StudentClassConvert x:Key="studentClassConvert" />
+            </StackPanel.Resources>
+            <WrapPanel HorizontalAlignment="Center">
+                <Button Content="Add" FontWeight="Bold" Style="{StaticResource btn}" Margin="15" Width="100" Height="30"
+                    Command="{Binding AddCommand}">
+                    <Button.CommandParameter>
+                        <MultiBinding Converter="{StaticResource studentClassConvert}">
+                            <Binding ElementName="txtClassId" Path="Text"/>
+                            <Binding ElementName="txtStudentId" Path="Text"/>
+                        </MultiBinding>
+                    </Button.CommandParameter>
+                </Button>
+                <Button Content="Edit" FontWeight="Bold" Style="{StaticResource btn}" Margin="15" Width="100" Height="30" Command="{Binding UpdateCommand}"
+                    CommandParameter="{Binding ElementName=Grid, Path=SelectedItem}">
+                </Button>
+                <Button Content="Delete" FontWeight="Bold" Style="{StaticResource btn}" Margin="15" Width="100" Height="30" Command="{Binding DeleteCommand}"
+                    CommandParameter="{Binding ElementName=Grid, Path=SelectedItem}">
+                </Button>
+            </WrapPanel>
+            <WrapPanel Margin="0,15,0,0">
+                <Label Width="145" FontWeight="DemiBold" FontSize="15" Foreground="White">Class Id:</Label>
+                <TextBox Name="txtClassId" Background="White" Width="200" Text ="{Binding ElementName=Grid, 
+                Path=SelectedItem.ClassID, UpdateSourceTrigger=PropertyChanged}"/>
+            </WrapPanel>
+            <WrapPanel Margin="0,15,0,0">
+                <Label Width="145" FontWeight="DemiBold" FontSize="15" Foreground="White">Student Id:</Label>
+                <TextBox Name="txtStudentId" Background="White" Width="200" Text ="{Binding ElementName=Grid, 
+                Path=SelectedItem.StudentID, UpdateSourceTrigger=PropertyChanged}"/>
+            </WrapPanel>
+            <WrapPanel>
+                <Label Content="{Binding ErrorMessage}" FontSize="15" Foreground="Red" Height="30"/>
+            </WrapPanel>
+            <DataGrid Name="Grid"   Margin="5" AutoGenerateColumns="False" Height="377"
+                  ItemsSource="{Binding StudentClassList}" IsReadOnly="True"
+                  ScrollViewer.VerticalScrollBarVisibility="Visible" Width="483">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="Class Id" Binding="{Binding ClassID}"/>
+                    <DataGridTextColumn Header="Student Id" Binding="{Binding StudentID}"/>
+                    <DataGridTextColumn Header="Student Name" Binding="{Binding StudentName}"/>
+                </DataGrid.Columns>
+                <DataGrid.Background>
+                    <SolidColorBrush Color="Azure"/>
+                </DataGrid.Background>
+            </DataGrid>
+        </StackPanel>
+    </Canvas>
+
+</Window>

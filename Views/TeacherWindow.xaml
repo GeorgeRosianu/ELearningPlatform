@@ -1,0 +1,86 @@
+﻿<UserControl x:Class="EducationPlatform.Views.TeacherWindow"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:EducationPlatform.Views" xmlns:ctx="clr-namespace:EducationPlatform.ViewModels"
+             mc:Ignorable="d" 
+             d:DesignHeight="675" d:DesignWidth="1000">
+
+    <UserControl.DataContext>
+        <ctx:TeacherWindowViewModel/>
+    </UserControl.DataContext>
+    <UserControl.Background>
+        <ImageBrush ImageSource="..\Resources\Background3.jpg"/>
+    </UserControl.Background>
+    <Grid>
+        <StackPanel>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="5,15,5,5">
+                <StackPanel Margin="5">
+                    <TextBlock Text="Classes: " FontSize="27" Foreground="White" />
+                    <DataGrid Name="classesGrid" AutoGenerateColumns="False" Height="324" Width="300"
+                  ItemsSource="{Binding ClassesList}" IsReadOnly="True"
+                  ScrollViewer.VerticalScrollBarVisibility="Visible">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="IdClass" Binding="{Binding ClassID}"/>
+                            <DataGridTextColumn Header="IdClassMaster" Binding="{Binding ClassMasterID}"/>
+                            <DataGridTextColumn Header="Specialization" Binding="{Binding Specialization}"/>
+                            <DataGridTextColumn Header="StudyYear" Binding="{Binding StudyYear}"/>
+                        </DataGrid.Columns>
+                        <DataGrid.Background>
+                            <SolidColorBrush Color="Azure"/>
+                        </DataGrid.Background>
+                    </DataGrid>
+                </StackPanel>
+                <StackPanel Margin="5">
+                    <TextBlock Text="Students: " FontSize="27" Foreground="White" />
+                    <DataGrid Name="studentsGrid" AutoGenerateColumns="False" Height="324"
+                  ItemsSource="{Binding StudentsList}" IsReadOnly="True"
+                  ScrollViewer.VerticalScrollBarVisibility="Visible" Width="250">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="IdStudent" Binding="{Binding StudentID}"/>
+                            <DataGridTextColumn Header="Name" Binding="{Binding Name}"/>
+                            <DataGridTextColumn Header="BirthDate" Binding="{Binding BirthDate}"/>
+                        </DataGrid.Columns>
+                        <DataGrid.Background>
+                            <SolidColorBrush Color="Azure"/>
+                        </DataGrid.Background>
+                    </DataGrid>
+                </StackPanel>
+                <StackPanel Margin="5">
+                    <TextBlock Text="Subjects: " FontSize="27" Foreground="White" />
+                    <DataGrid Name="subjectsGrid" AutoGenerateColumns="False" Height="324"
+                  ItemsSource="{Binding SubjectsList}" IsReadOnly="True"
+                  ScrollViewer.VerticalScrollBarVisibility="Visible" Width="200">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="IdSubject" Binding="{Binding SubjectID}"/>
+                            <DataGridTextColumn Header="Name" Binding="{Binding Name}"/>
+                        </DataGrid.Columns>
+                        <DataGrid.Background>
+                            <SolidColorBrush Color="Azure"/>
+                        </DataGrid.Background>
+                    </DataGrid>
+                </StackPanel>
+                <StackPanel Margin="5">
+                    <TextBlock Text="Materials: " FontSize="27" Foreground="White" />
+                    <DataGrid Name="materialsGrid" AutoGenerateColumns="False" Height="324"
+                  ItemsSource="{Binding MaterialsList}" IsReadOnly="True"
+                  ScrollViewer.VerticalScrollBarVisibility="Visible" Width="200">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="Path" Binding="{Binding Path}"/>
+                        </DataGrid.Columns>
+                        <DataGrid.Background>
+                            <SolidColorBrush Color="Azure"/>
+                        </DataGrid.Background>
+                    </DataGrid>
+                </StackPanel>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="5,115,5,5">
+                <Button Margin="5" Content="Add Absence" Click="AddAbsenceButton_Click" FontWeight="Bold" Width="194" Height="40" Style="{StaticResource btn}"/>
+                <Button Margin="5" Content="Add Mark" Click="AddMarkButton_Click" FontWeight="Bold" Width="194" Height="40" Style="{StaticResource btn}"/>
+                <Button Margin="5" Content="Add Average" Click="AddAverageButton_Click" FontWeight="Bold" Width="194" Height="40" Style="{StaticResource btn}"/>
+                <Button Margin="5" Content="Add Material"  Command="{Binding AddCommand}" FontWeight="Bold" Width="194" Height="40" Style="{StaticResource btn}"/>
+            </StackPanel>
+        </StackPanel>
+    </Grid>
+</UserControl>

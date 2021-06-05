@@ -1,0 +1,40 @@
+﻿<UserControl x:Class="EducationPlatform.Views.AdministratorWindow"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:EducationPlatform.Views"
+             mc:Ignorable="d"  Height="675" Width="1000">
+    <UserControl.Background>
+        <ImageBrush ImageSource="..\Resources\Background3.jpg"/>
+    </UserControl.Background>
+    <Grid>
+        <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
+            <StackPanel Margin="5,5,5,5" Orientation="Vertical" HorizontalAlignment="Center">
+                <StackPanel Orientation="Horizontal" Margin="5">
+                    <TextBlock VerticalAlignment="Center" Margin="5" Text="Add subjects for classes: " Width="350" FontSize="20" Foreground="White"/>
+                    <Button Content="Class and Subjects" FontWeight="Bold" Name="BTN1" Height="40" Width="230" Click="BTN1_Click" Style="{StaticResource btn}" />
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" Margin="5">
+                    <TextBlock VerticalAlignment="Center" Margin="5" Text="Add subjects to classes for teachers: " Width="350" FontSize="20" Foreground="White"/>
+                    <Button Content="Class and Subjects for Teachers" FontWeight="Bold" Name="BTN2" Height="40" Width="230" Click="BTN2_Click" Style="{StaticResource btn}" />
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" Margin="5">
+                    <TextBlock VerticalAlignment="Center" Margin="5" Text="Add students to Class: " FontSize="20" Width="350" Foreground="White"/>
+                    <Button Content="Add Students to class" FontWeight="Bold" Name="BTN3" Height="40" Width="230" Click="BTN3_Click" Style="{StaticResource btn}" />
+                </StackPanel>
+            </StackPanel>
+            <TextBlock Margin="25,35,5,35" Text="Controls: " FontSize="20" Foreground="White" />
+            <StackPanel Margin="5,5,5,5" Orientation="Horizontal">
+                <Button Margin="15,5,15,5" Content="Add Student" FontWeight="Bold" Name="Students" Height="40" Width="230" Click="Students_Click" Style="{StaticResource btn}" />
+                <Button Margin="15,5,15,5" Content="Add Class Master" FontWeight="Bold" Name="ClassMasters" Height="40" Width="230" Click="ClassMasters_Click" Style="{StaticResource btn}" />
+                <Button Margin="15,5,15,5" Content="Add Teacher" FontWeight="Bold" Name="Teachers" Height="40" Width="230" Click="Teachers_Click" Style="{StaticResource btn}"/>
+            </StackPanel>
+            <StackPanel Margin="5,5,5,5" Orientation="Horizontal">
+                <Button Margin="15,5,15,5" Content="Add Class" FontWeight="Bold" Name="Classes" Height="40" Width="230" Click="Classes_Click" Style="{StaticResource btn}"/>
+                <Button Margin="15,5,15,5" Content="Add Subject" FontWeight="Bold" Name="Subjects" Height="40" Width="230" Click="Subjects_Click" Style="{StaticResource btn}" />
+                <Button Margin="15,5,15,5" Content="Add Thesis" FontWeight="Bold" Name="Thesis" Height="40" Width="230" Click="Thesis_Click" Style="{StaticResource btn}" />
+            </StackPanel>
+        </StackPanel>
+    </Grid>
+</UserControl>
